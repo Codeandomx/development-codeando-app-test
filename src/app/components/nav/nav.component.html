@@ -1,0 +1,19 @@
+<nav class="light-blue darken-4 fixed">
+    <div class="nav-wrapper container">
+      	<a [routerLink]="['/']" class="brand-logo">Codeando</a>
+      	<ul id="nav-mobile" class="right hide-on-med-and-down">
+			<li>
+				<a [routerLink]="['/']" class="waves-effect waves-light">Inicio</a>
+			</li>
+			<li>
+				<a href="http://blog.codeando.org">Blog</a>
+			</li>
+			<li [hidden]="auth.isLoggedIn()">
+				<a class="waves-effect waves-light modal-trigger" href="#modal1">Login</a>
+			</li>
+			<li [hidden]="!auth.isLoggedIn()">
+				<a class="waves-effect waves-light" href="#" (click)="auth.logout()">Logout</a>
+			</li>
+		</ul>
+	</div>
+</nav>

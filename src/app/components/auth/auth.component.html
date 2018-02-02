@@ -1,0 +1,32 @@
+<div id="modal1" class="modal modal-fixed-footer" materialize="modal">
+	<div class="modal-content center-align">
+   	<h4>Inicio de sesión</h4>
+    <p>
+      <button type="button" class="btn btn-large grey darken-4" (click)="signInWithGithub()">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        Login with Github  
+      </button>
+    </p>
+    <p>
+    	<button type="button" class="btn btn-large light-blue darken-2" (click)="signInWithTwitter()">
+   		  <i class="fa fa-twitter" aria-hidden="true"></i>
+     		Login with Twitter 
+  	  </button>
+    </p>
+    <p>
+      <button type="buton" class="btn btn-large indigo darken-4" (click)="signInWithFacebook()">
+        <i class="fa fa-facebook" aria-hidden="true"></i> 
+        Login with Facebook
+      </button>
+    </p>
+    <p>
+      <button type="button" class="btn btn-large deep-orange darken-4" (click)="signInWithGoogle()">
+        <i class="fa fa-google" aria-hidden="true"></i>
+        Login with Google  
+      </button>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+  </div>
+</div>
