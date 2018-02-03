@@ -1,6 +1,6 @@
-<nav class="light-blue darken-4 fixed">
+<nav class="fixed">
     <div class="nav-wrapper container">
-      	<a [routerLink]="['/']" class="brand-logo">Codeando</a>
+      	<a [routerLink]="['/']" class="brand-logo light-blue-text text-darken-4">Codeando</a>
       	<ul id="nav-mobile" class="right hide-on-med-and-down">
 			<li>
 				<a [routerLink]="['/']" class="waves-effect waves-light">Inicio</a>
@@ -8,12 +8,64 @@
 			<li>
 				<a href="http://blog.codeando.org">Blog</a>
 			</li>
-			<li [hidden]="auth.isLoggedIn()">
+			<li [hidden]="(auth.user | async)">
 				<a class="waves-effect waves-light modal-trigger" href="#modal1">Login</a>
 			</li>
-			<li [hidden]="!auth.isLoggedIn()">
+			<li [hidden]="!(auth.user | async)">
 				<a class="waves-effect waves-light" href="#" (click)="auth.logout()">Logout</a>
+			</li>
+		</ul>
+		<ul class="left hide-on-large-only">
+			<li>
+				<a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars fa-2x"></i></a>
 			</li>
 		</ul>
 	</div>
 </nav>
+
+<ul id="slide-out" class="side-nav">
+	<li *ngIf="auth.user | async as user">
+		<div class="user-view">
+  			<div class="background">
+    			<img src="assets/background.jpg">
+  			</div>
+	  		<a>
+	  			<img class="circle" src="{{ user?.photoURL }}">
+	  		</a>
+	  		<a href="#">
+	  			<span class="name black white-text">{{ user?.displayName }}</span>
+	  		</a>
+	  	</div>
+	</li>
+	<li *ngIf="!(auth.user | async)">
+		<div class="user-view">
+  			<div class="background">
+    			<img src="assets/background.jpg">
+  			</div>
+	  		<a href="#">
+	  			<img class="circle" src="assets/logo_opt.png">
+	  		</a>
+	  		<a href="#">
+	  			<span class="name black white-text">Binvenid@ a Codeando</span>
+	  		</a>
+	  	</div>
+	</li>
+	<li>
+		<a [routerLink]="['/']" class="waves-effect waves-light">
+			Inicio
+		</a>
+	</li>
+	<li>
+		<a href="http://blog.codeando.org">
+			Blog
+		</a>
+	</li>
+	<li><div class="divider"></div></li>
+	<li><a class="subheader">Sesión</a></li>
+	<li [hidden]="(auth.user | async)">
+		<a class="waves-effect waves-light modal-trigger" href="#modal1">Login</a>
+	</li>
+	<li [hidden]="!(auth.user | async)">
+		<a class="waves-effect waves-light" href="#" (click)="auth.logout()">Logout</a>
+	</li>
+</ul>

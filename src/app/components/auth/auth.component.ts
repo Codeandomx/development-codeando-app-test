@@ -18,9 +18,8 @@ export class AuthComponent implements OnInit {
   	// Login con twitter
   	signInWithTwitter() {
   		this._auth.signInWithTwitter()
-		.then( res => {
-			// Aqui debemos cerrar el popup
-			$('#modal1').modal('close');
+		.then((res) => {
+			this.close();
 		});
   	}
 
@@ -28,8 +27,7 @@ export class AuthComponent implements OnInit {
 	signInWithFacebook() {
 	  	this._auth.signInWithFacebook()
 	  	.then((res) => { 
-	    	// Aqui debemos cerrar el popup
-			$('#modal1').modal('close');
+	    	this.close();
 			// datos devueltos
 			console.log(res);
 	    })
@@ -40,8 +38,7 @@ export class AuthComponent implements OnInit {
 	signInWithGoogle() {
 	  	this._auth.signInWithGoogle()
 	  	.then((res) => { 
-	    	// Aqui debemos cerrar el popup
-			$('#modal1').modal('close');
+	    	this.close();
 	    });
 	}
 
@@ -49,8 +46,15 @@ export class AuthComponent implements OnInit {
 	signInWithGithub() {
 	  	this._auth.signInWithGithub()
 	  	.then((res) => { 
-	    	// Aqui debemos cerrar el popup
-			$('#modal1').modal('close');
+	    	this.close();
 	    });
-	}	
+	}
+
+	// Cerramos elementos visuales
+	close() {
+		// Aqui debemos cerrar el popup
+		$('#modal1').modal('close');
+		// Cerramos la barra lateral
+		//$('.button-collapse').sideNav('hide');
+	}
 }

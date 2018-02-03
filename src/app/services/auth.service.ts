@@ -2,81 +2,91 @@ import { Injectable } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/switchMap';
 
+import {
+  AngularFirestore,
+  AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
+interface User {
+  uid: string;
+  email: string;
+  photoURL?: string;
+  displayName?: string;
+  favoriteColor?: string;
+}
 
 @Injectable()
 export class AuthService {
 	// Datos del usuario
-	private _user: Observable<firebase.User>;
-	private _userDetails: firebase.User = null;
+	user: Observable<User>;
 
 	constructor(
-		private _fireBaseAuth: AngularFireAuth,
-		private _router: Router
-	) {
-		// Obtenemos el estado del usuario
-		this._user = _fireBaseAuth.authState;
-
-		this._user.subscribe( (user) => {
-          	if (user) {
-            	this._userDetails = user;
-          	} else {
-            	this._userDetails = null;
-          	}
-        });
-	}
-
-	// Obtenemos al usuario
-	getUserDetails() {
-		return this._userDetails;
-	}
+    private afAuth: AngularFireAuth,
+    private afs: AngularFirestore,
+    private router: Router)
+  {
+    //// Get auth data, then get firestore user document || null
+    this.user = this.afAuth.authState
+      .switchMap(user => {
+        if (user) {
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
+        } else {
+          return Observable.of(null)
+        }
+      })
+  }
 
 	// autentificación con Twitter
 	signInWithTwitter() {
 		// Retornamos un popup para pedir autorizacion
-      	return this._fireBaseAuth.auth.signInWithPopup(
-        	new firebase.auth.TwitterAuthProvider()
-      	)
+    const provider = new firebase.auth.TwitterAuthProvider()
+    return this.oAuthLogin(provider);
+  }
+
+  // autentificación con Facebook
+  signInWithFacebook() {
+   	const provider = new firebase.auth.FacebookAuthProvider();
+    return this.oAuthLogin(provider);
+	}
+
+	// autentificacion con Google
+	signInWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+  	return this.oAuthLogin(provider);
+	}
+
+	// autentificacion con Github
+	signInWithGithub() {
+    const provider = new firebase.auth.GithubAuthProvider();
+  	return this.oAuthLogin(provider);
+	}
+
+  // Lanzamos el popup y obtenemos credenciales
+  private oAuthLogin(provider) {
+    return this.afAuth.auth.signInWithPopup(provider)
+      .then((credential) => {
+        this.updateUserData(credential.user)
+      })
+  }
+
+  // Obtenemos la información del usuario
+  private updateUserData(user) {
+    // Sets user data to firestore on login
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const data: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL
     }
+    return userRef.set(data)
+  }
 
-    // autentificación con Facebook
-    signInWithFacebook() {
-    	return this._fireBaseAuth.auth.signInWithPopup(
-     		new firebase.auth.FacebookAuthProvider()
-    	)
-  	}
-
-  	// autentificacion con Google
-  	signInWithGoogle() {
-    	return this._fireBaseAuth.auth.signInWithPopup(
-      		new firebase.auth.GoogleAuthProvider()
-    	)
-  	}
-
-  	// autentificacion con Github
-  	signInWithGithub() {
-    	return this._fireBaseAuth.auth.signInWithPopup(
-      		new firebase.auth.GithubAuthProvider()
-    	)
-  	}
-
-    // Verificamos si estamos logueados
-  	isLoggedIn() {
-  		if (this._userDetails == null ) {
-      		return false;
-    	} else {
-      		return true;
-    	}
-  	}
-
-  	// Logout
-  	logout() {
-    	this._fireBaseAuth.auth.signOut()
-    	.then( res => {
-    		this._userDetails = null;
-    	});
-  	}
+  // Logout
+  logout() {
+    this.afAuth.auth.signOut();
+  }
 }

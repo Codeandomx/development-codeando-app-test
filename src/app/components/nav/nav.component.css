@@ -1,0 +1,7 @@
+nav {
+    background-color: #fff !important;
+}
+nav ul li a {
+	color: #01579b !important;
+	font-weight: bold;
+}
