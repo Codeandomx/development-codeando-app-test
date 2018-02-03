@@ -15,6 +15,8 @@ export class NavComponent implements OnInit {
 
   	ngOnInit() {
   		// Inicializamos el componente sidenav
-  		$(".button-collapse").sideNav();
+  		$(".button-collapse").sideNav({
+  			draggable: true
+  		});
   	}
 }
