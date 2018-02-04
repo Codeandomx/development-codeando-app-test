@@ -1,1 +1,133 @@
-/* You can add global styles to this file, and also import other style files */
+/*********************************************************
+Configuración imagen de carga
+*********************************************************/
+
+#loader-container
+{
+	text-align: center;
+	margin-top: 220px;
+}
+.loader
+{
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+.loader-blue
+{
+  border-radius: 150px;
+  border: 18px solid transparent;
+  border-top-color: #176DEE;
+  border-bottom-color: #176DEE;
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+.loader-blue:after
+{
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    right: 5px;
+    border-radius: 150px;
+    border: 18px solid transparent;
+    border-top-color: #176DEE;
+    border-bottom-color: #176DEE;
+    opacity: 0.6;
+    -webkit-animation: spinreverse 2s linear infinite;
+    -moz-animation: spinreverse 2s linear infinite;
+    animation: spinreverse 2s linear infinite;
+}
+.loader-white
+{
+  border-radius: 150px;
+  border: 18px solid transparent;
+  border-top-color: #FFF;
+  border-bottom-color: #FFF;
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+.loader-white:after
+{
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    right: 5px;
+    border-radius: 150px;
+    border: 18px solid transparent;
+    border-top-color: #FFF;
+    border-bottom-color: #FFF;
+    opacity: 0.6;
+    -webkit-animation: spinreverse 2s linear infinite;
+    -moz-animation: spinreverse 2s linear infinite;
+    animation: spinreverse 2s linear infinite;
+}
+
+/* Animations */
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg); }
+
+  to {
+    -webkit-transform: rotate(360deg); } }
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg); }
+
+  to {
+    -moz-transform: rotate(360deg); } }
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@-webkit-keyframes spinreverse {
+  from {
+    -webkit-transform: rotate(0deg); }
+
+  to {
+    -webkit-transform: rotate(-360deg); } }
+@-moz-keyframes spinreverse {
+  from {
+    -moz-transform: rotate(0deg); }
+
+  to {
+    -moz-transform: rotate(-360deg); } }
+@keyframes spinreverse {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  to {
+    -webkit-transform: rotate(-360deg);
+    -moz-transform: rotate(-360deg);
+    -ms-transform: rotate(-360deg);
+    -o-transform: rotate(-360deg);
+    transform: rotate(-360deg); } }
+
+
+@media (max-width: 400px) {
+	#loader-container
+	{
+		margin-top: 170px;
+	}
+}

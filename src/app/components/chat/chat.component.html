@@ -1,0 +1,21 @@
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large light-blue darken-4 waves-effect waves-light tooltipped" data-position="left" data-delay="50" data-tooltip="Ingresa al chat" (click)="open()">
+      <i class="fa fa-comments fa-2x"></i>
+    </a>
+</div>
+
+<div id="chat">
+	<div id="chat-header">
+		<div id="chat-close">
+			<a href="#!" class="red-text" (click)="close()"><i class="fa fa-times fa-2x"></i></a>
+		</div>
+		<app-chat-add></app-chat-add>
+	</div>
+	<ul id="chat-view" class="collection">
+	    <li class="collection-item avatar" *ngFor="let chat of chats | orderBy : '-date'">
+	      	<img src="{{ chat.img }}" alt="" class="circle">
+	      	<span class="title">{{ chat.name }}</span>
+	      	<p>{{ chat.msg }}</p>
+	    </li>
+	</ul>
+</div>

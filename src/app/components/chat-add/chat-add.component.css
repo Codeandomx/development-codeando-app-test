@@ -1,0 +1,34 @@
+input::placeholder
+{
+	color: #fff;
+}
+input[type="text"]
+{
+	color: #fff;
+}
+
+#chat-form
+{
+	padding: 10px;
+	background-color: #2B3E9D;
+	border-radius: 3px;
+}
+#chat-login
+{
+	padding: 10px;
+	background-color: #2B3E9D;
+	border-radius: 3px;
+	color: #fff;
+	text-align: center;
+	height: 130px;
+	vertical-align: middle;
+}
+#chat-login a
+{
+	margin-top: 45px;
+}
+
+.hidden
+{
+	display: none;
+}

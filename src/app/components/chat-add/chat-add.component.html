@@ -1,0 +1,14 @@
+<div id="chat-form" *ngIf="auth.user | async as user">
+	<form (ngSubmit)="onSubmit(chatForm)" #chatForm="ngForm">
+		<input type="text" class="hidden" name="uid" [ngModel]="user?.uid">
+		<input type="text" class="hidden" name="name" [ngModel]="user?.displayName">
+		<input type="text" class="hidden" name="img" [ngModel]="user?.photoURL">
+		<input type="text" name="msg" minlength="10" placeholder="Escriba su mensaje" [(ngModel)]="chatModel.msg" required />
+		<input type="submit" class="waves-effect waves-light btn green darken-1" [disabled]="!chatForm.form.valid" value="Enviar" />
+	</form>
+</div>
+<div id="chat-login" [hidden]="(auth.user | async)">
+	<a class="waves-effect waves-light white-text modal-trigger" href="#modal1">
+		Inicie sesión para publicar en el chat <i class="fa fa-bullseye fa-lg"></i>
+	</a>
+</div>

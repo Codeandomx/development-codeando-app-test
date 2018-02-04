@@ -1,0 +1,34 @@
+#chat
+{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 400px;
+	height: 100%;
+	background-color: #fff;
+	z-index: 998;
+	padding: 0 10px;
+	transition: all 0.25s ease-in;
+	transform: translateX(400px);
+}
+#chat-close
+{
+	margin-bottom: 5px;
+	border-bottom: 1px solid gray;
+}
+#chat-view
+{
+	overflow-y: auto;
+	height: 70%;
+}
+
+@media (max-width: 400px) {
+	#chat
+	{
+		width: 360px;
+	}
+	#chat-view
+	{
+		height: 60%;
+	}
+}

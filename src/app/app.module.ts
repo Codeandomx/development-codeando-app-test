@@ -16,25 +16,33 @@ import { AuthComponent } from './components/auth/auth.component';
 
 import { MaterializeModule } from 'angular2-materialize';
 import { NavComponent } from './components/nav/nav.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { ChatAddComponent } from './components/chat-add/chat-add.component';
+import { ChatService } from './services/chat.service';
+
+import { NgPipesModule } from 'ngx-pipes';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    NavComponent
+    NavComponent,
+    ChatComponent,
+    ChatAddComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MaterializeModule,
-    AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase, 'codeando'),
+    AngularFirestoreModule,
     AngularFireAuthModule,
+    NgPipesModule,
     InitRoutingModule,
     AppRoutingModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

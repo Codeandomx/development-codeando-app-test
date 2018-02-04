@@ -2,27 +2,43 @@
 	<div class="modal-content center-align">
    	<h4>Inicio de sesión</h4>
     <p>
-      <button type="button" class="btn btn-large grey darken-4" (click)="signInWithGithub()">
+      <button type="button" class="btn btn-large grey darken-4 hide-on-small-only" (click)="signInWithGithub()">
         <i class="fa fa-github" aria-hidden="true"></i>
         Login with Github  
       </button>
-    </p>
-    <p>
-    	<button type="button" class="btn btn-large light-blue darken-2" (click)="signInWithTwitter()">
-   		  <i class="fa fa-twitter" aria-hidden="true"></i>
-     		Login with Twitter 
-  	  </button>
-    </p>
-    <p>
-      <button type="buton" class="btn btn-large indigo darken-4" (click)="signInWithFacebook()">
-        <i class="fa fa-facebook" aria-hidden="true"></i> 
-        Login with Facebook
+      <button type="button" class="btn grey darken-4 hide-on-med-and-up" (click)="signInWithGithub()">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        Github  
       </button>
     </p>
     <p>
-      <button type="button" class="btn btn-large deep-orange darken-4" (click)="signInWithGoogle()">
+    	<button type="button" class="btn btn-large light-blue darken-2 hide-on-small-only" (click)="signInWithTwitter()">
+   		  <i class="fa fa-twitter" aria-hidden="true"></i>
+     		Login with Twitter 
+  	  </button>
+      <button type="button" class="btn light-blue darken-2 hide-on-med-and-up" (click)="signInWithTwitter()">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        Twitter 
+      </button>
+    </p>
+    <p>
+      <button type="buton" class="btn btn-large indigo darken-4 hide-on-small-only" (click)="signInWithFacebook()">
+        <i class="fa fa-facebook" aria-hidden="true"></i> 
+        Login with Facebook
+      </button>
+      <button type="buton" class="btn indigo darken-4 hide-on-med-and-up" (click)="signInWithFacebook()">
+        <i class="fa fa-facebook" aria-hidden="true"></i> 
+        Facebook
+      </button>
+    </p>
+    <p>
+      <button type="button" class="btn btn-large deep-orange darken-4 hide-on-small-only" (click)="signInWithGoogle()">
         <i class="fa fa-google" aria-hidden="true"></i>
         Login with Google  
+      </button>
+      <button type="button" class="btn deep-orange darken-4 hide-on-med-and-up" (click)="signInWithGoogle()">
+        <i class="fa fa-google" aria-hidden="true"></i>
+        Google  
       </button>
     </p>
   </div>
