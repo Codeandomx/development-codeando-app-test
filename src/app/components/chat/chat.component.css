@@ -16,6 +16,10 @@
 	margin-bottom: 5px;
 	border-bottom: 1px solid gray;
 }
+#chat-close a:hover
+{
+	cursor: pointer;
+}
 #chat-view
 {
 	overflow-y: auto;

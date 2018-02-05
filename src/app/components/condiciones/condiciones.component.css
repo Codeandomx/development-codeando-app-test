@@ -9,7 +9,7 @@ h3
 }
 h4
 {
-	color: #3C4FAF;
+	color: #3C4FAE;
 }
 p
 {
@@ -36,12 +36,6 @@ span
 {
 	text-align: justify;
 }
-.second-img
-{
-	width: 150px;
-	height: 150px;
-	border-radius: 15px;
-}
 
 @media (max-width: 600px) {
 	#main-box
@@ -50,12 +44,7 @@ span
 	}
 }
 @media (min-width:600px) and (max-width: 700px) {
-	.second-img
-	{
-		width: 100px;
-		height: 100px;
-		margin-top: 25px;
-	}
+	
 }
 @media (max-width: 400px) {
 	span
