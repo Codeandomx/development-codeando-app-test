@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { environment } from '../environments/environment';
 import { AuthService } from './services/auth.service';
 import { AuthComponent } from './components/auth/auth.component';
 
@@ -21,6 +20,15 @@ import { ChatAddComponent } from './components/chat-add/chat-add.component';
 import { ChatService } from './services/chat.service';
 
 import { NgPipesModule } from 'ngx-pipes';
+
+const firebase = {
+  apiKey: "AIzaSyAY2qT2BCYOkIiJ0WbRMWBNB-iV2eEVdJE",
+  authDomain: "codeando-ccea8.firebaseapp.com",
+  databaseURL: "https://codeando-ccea8.firebaseio.com",
+  projectId: "codeando-ccea8",
+  storageBucket: "codeando-ccea8.appspot.com",
+  messagingSenderId: "293307513377"
+}
 
 @NgModule({
   declarations: [
@@ -35,9 +43,9 @@ import { NgPipesModule } from 'ngx-pipes';
     FormsModule,
     HttpModule,
     MaterializeModule,
-    AngularFireModule.initializeApp(environment.firebase, 'codeando'),
-    AngularFirestoreModule,
+    AngularFireModule.initializeApp(firebase, 'codeando'),
     AngularFireAuthModule,
+    AngularFirestoreModule.enablePersistence(),
     NgPipesModule,
     InitRoutingModule,
     AppRoutingModule
