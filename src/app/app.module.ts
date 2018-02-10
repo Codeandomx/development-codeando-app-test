@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { InitRoutingModule } from './modules/init/init-routing.module';
+import { AdminRoutingModule } from './modules/admin/admin-routing.module';
 import { AppComponent } from './app.component';
 
 import { AngularFireModule } from 'angularfire2';
@@ -20,6 +21,7 @@ import { ChatAddComponent } from './components/chat-add/chat-add.component';
 import { ChatService } from './services/chat.service';
 
 import { NgPipesModule } from 'ngx-pipes';
+import { AuthSafeService } from './services/auth-safe.service';
 
 const firebase = {
   apiKey: "AIzaSyAY2qT2BCYOkIiJ0WbRMWBNB-iV2eEVdJE",
@@ -48,9 +50,14 @@ const firebase = {
     AngularFirestoreModule.enablePersistence(),
     NgPipesModule,
     InitRoutingModule,
+    AdminRoutingModule,
     AppRoutingModule
   ],
-  providers: [AuthService, ChatService],
+  providers: [
+    AuthService,
+    ChatService,
+    AuthSafeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
