@@ -1,3 +1,25 @@
-<p>
-  admin works!
-</p>
+<div class="navbar-fixed" *ngIf="auth.user | async as user">
+	<nav>
+	    <div class="nav-wrapper container">
+	      	<a [routerLink]="['/admin']" class="brand-logo white-text text-white">
+	      		<img class="circle" src="{{ user?.photoURL }}" />
+	      		Codeando Admin
+	      	</a>
+	      	<!--
+			<ul class="left hide-on-large-only">
+				<li>
+					<a (click)="openSideNav()"><i class="fa fa-bars fa-2x"></i></a>
+				</li>
+			</ul>
+			-->
+		</div>
+	</nav>
+</div>
+<div class="row container">
+	<div class="col s12 m3 l4">
+		<app-admin-menu></app-admin-menu>
+	</div>
+	<div class="col s12 m9 l8">
+		<router-outlet></router-outlet>		
+	</div>
+</div>

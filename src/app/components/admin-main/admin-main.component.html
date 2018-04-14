@@ -1,0 +1,5 @@
+<div *ngIf="auth.user | async as user">
+	<p>
+   		Bienvenid@ {{ user?.displayName }}
+	</p>
+</div>

@@ -1,0 +1,15 @@
+<div class="collection with-header">
+    <a class="collection-header">
+    	<h4>Opciones</h4>
+    </a>
+    <div class="divider"></div>
+    <a href="#" [routerLink]="['/admin']" class="collection-item waves-effect waves-light">
+    	Inicio
+    </a>
+    <a href="#" [routerLink]="['/admin/courses']"class="collection-item waves-effect waves-light">
+    	Cursos
+    </a>
+    <a class="collection-item waves-effect waves-light" (click)="exit()">
+    	Salir
+    </a>
+</div>
