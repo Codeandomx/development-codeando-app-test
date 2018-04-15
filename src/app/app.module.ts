@@ -23,6 +23,8 @@ import { ChatService } from './services/chat.service';
 import { NgPipesModule } from 'ngx-pipes';
 import { AuthSafeService } from './services/auth-safe.service';
 
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+
 const firebase = {
   apiKey: "AIzaSyAY2qT2BCYOkIiJ0WbRMWBNB-iV2eEVdJE",
   authDomain: "codeando-ccea8.firebaseapp.com",
@@ -48,6 +50,8 @@ const firebase = {
     AngularFireModule.initializeApp(firebase, 'codeando'),
     AngularFireAuthModule,
     AngularFirestoreModule.enablePersistence(),
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
     NgPipesModule,
     InitRoutingModule,
     AdminRoutingModule,

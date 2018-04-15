@@ -3,3 +3,8 @@
    		Bienvenid@ {{ user?.displayName }}
 	</p>
 </div>
+<form (ngSubmit)="onSubmit()" #froalaForm="ngForm">
+  	<textarea [froalaEditor]='options' name="content" [(froalaModel)]="froalaModel.content"></textarea>
+  	<div [froalaView]="froalaModel.content"></div>
+  	<button type="submit" class="waves-effect waves-light btn green darken-1">Guardar</button>
+</form>
